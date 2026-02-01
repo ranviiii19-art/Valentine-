@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snigddha ❤️ Ranvijay</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  max-width: 360px;
+  padding: 25px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+h1 {
+  color: #ff3e6c;
+  font-size: 24px;
+}
+
+p {
+  color: #555;
+  font-size: 16px;
+}
+
+button {
+  width: 120px;
+  padding: 12px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff3e6c;
+  color: white;
+}
+
+#noBtn {
+  background: #ddd;
+  position: absolute;
+}
+
+#celebration {
+  display: none;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+/* Floating hearts & confetti */
+.heart, .confetti {
+  position: fixed;
+  top: 100%;
+  animation: rise 4s linear infinite;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="question">
+  <h1>Snigddha 💖</h1>
+  <p>Will you be my Valentine?</p>
+  <button id="yesBtn">Yes 😍</button>
+  <button id="noBtn">No 🙈</button>
+</div>
+
+<div class="card" id="celebration">
+  <h1>YAYYYY 💘🎉</h1>
+  <p>
+    You just made me the happiest person, Snigddha ❤️  
+    <br><br>
+    I really wish we were together for Valentine weeks.  
+    Distance may separate us, but my heart is always with you.
+  </p>
+
+  <!-- Put your couple photo here -->
+  <img src="photo.jpg" alt="Snigddha & Ranvijay">
+
+  <p>Forever yours,<br><strong>Ranvijay 💞</strong></p>
+</div>
+
+<!-- Mehrama Instrumental -->
+<audio id="music" src="mehrama-instrumental.mp3"></audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const music = document.getElementById("music");
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+yesBtn.onclick = () => {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("celebration").style.display = "block";
+  music.play();
+  startCelebration();
+};
+
+function startCelebration() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 200);
+
+  setInterval(() => {
+    const conf = document.createElement("div");
+    conf.innerHTML = "🎉";
+    conf.className = "confetti";
+    conf.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(conf);
+    setTimeout(() => conf.remove(), 4000);
+  }, 300);
+}
+</script>
+
+</body>
+</html>
